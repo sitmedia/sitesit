@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Профориентация в СИТ — Сальский индустриальный техникум</title>
+  <meta name="description" content="Медиапроект о профориентационных мероприятиях для школьников 8–9 классов ГБПОУ РО «Сальский индустриальный техникум». Дни открытых дверей, экскурсии, консультации.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b1220;
+      --bg-card: #121a2b;
+      --bg-soft: #182236;
+      --accent: #3b82f6;
+      --accent-2: #22d3ee;
+      --accent-3: #a78bfa;
+      --text: #e8eef9;
+      --muted: #94a3b8;
+      --border: rgba(148, 163, 184, 0.18);
+      --success: #34d399;
+      --radius: 18px;
+      --shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Manrope', system-ui, sans-serif;
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(59,130,246,0.18), transparent 50%),
+                  radial-gradient(900px 500px at 90% 10%, rgba(34,211,238,0.12), transparent 45%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a { color: var(--accent-2); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(11, 18, 32, 0.78);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 0;
+      gap: 16px;
+    }
+    .logo {
+      font-family: 'Unbounded', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-badge {
+      width: 34px; height: 34px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      display: grid; place-items: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #0b1220;
+    }
+    .nav-links {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+    .nav-links a {
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 500;
+      padding: 8px 12px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 64px 0 40px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 1fr;
+      gap: 36px;
+      align-items: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--accent-2);
+      background: rgba(34, 211, 238, 0.1);
+      border: 1px solid rgba(34, 211, 238, 0.25);
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.7rem);
+      line-height: 1.15;
+      margin-bottom: 18px;
+      letter-spacing: -0.02em;
+    }
+    .hero-lead {
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 52ch;
+      margin-bottom: 28px;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+      text-decoration: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--accent), #2563eb);
+      color: white;
+      box-shadow: 0 10px 30px rgba(59, 130, 246, 0.35);
+    }
+    .btn-primary:hover { filter: brightness(1.08); text-decoration: none; }
+    .btn-ghost {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.09); text-decoration: none; }
+
+    .hero-card {
+      background: linear-gradient(160deg, rgba(59,130,246,0.15), rgba(34,211,238,0.06));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+    .stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .stat {
+      background: rgba(11,18,32,0.55);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .stat strong {
+      display: block;
+      font-family: 'Unbounded', sans-serif;
+      font-size: 1.35rem;
+      margin-bottom: 4px;
+    }
+    .stat span { color: var(--muted); font-size: 0.85rem; }
+
+    /* Sections */
+    section { padding: 56px 0; }
+    .section-title {
+      font-family: 'Unbounded', sans-serif;
+      font-size: clamp(1.4rem, 3vw, 1.9rem);
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    .section-sub {
+      color: var(--muted);
+      max-width: 60ch;
+      margin-bottom: 28px;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      transition: 0.25s;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(59, 130, 246, 0.35);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.25);
+    }
+    .card-icon {
+      width: 42px; height: 42px;
+      border-radius: 12px;
+      display: grid; place-items: center;
+      margin-bottom: 14px;
+      font-size: 1.2rem;
+      background: rgba(59,130,246,0.15);
+    }
+    .card h3 {
+      font-size: 1.08rem;
+      margin-bottom: 8px;
+    }
+    .card p { color: var(--muted); font-size: 0.95rem; }
+
+    /* Timeline / events */
+    .timeline {
+      display: grid;
+      gap: 14px;
+    }
+    .event {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 16px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+    }
+    .event-date {
+      font-family: 'Unbounded', sans-serif;
+      font-size: 0.85rem;
+      color: var(--accent-2);
+      padding-top: 4px;
+    }
+    .event h3 { margin-bottom: 6px; font-size: 1.05rem; }
+    .event p { color: var(--muted); font-size: 0.95rem; }
+    .tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--accent-3);
+      background: rgba(167, 139, 250, 0.12);
+      border: 1px solid rgba(167, 139, 250, 0.25);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    /* Infographic */
+    .infographic {
+      background: var(--bg-soft);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+    }
+    .bars {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+    .bar-item label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
+      margin-bottom: 6px;
+      color: var(--muted);
+    }
+    .bar-track {
+      height: 12px;
+      background: rgba(255,255,255,0.06);
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      max-width: 720px;
+    }
+    .photo {
+      aspect-ratio: 1 / 1;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: linear-gradient(145deg, #1e293b, #0f172a);
+      display: grid;
+      place-items: end start;
+      padding: 14px;
+      position: relative;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+    }
+    .photo:not(.has-img)::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(59,130,246,0.25), transparent 45%),
+        radial-gradient(circle at 70% 70%, rgba(34,211,238,0.15), transparent 40%);
+    }
+    .photo span {
+      position: relative;
+      z-index: 1;
+      font-size: 0.85rem;
+      font-weight: 600;
+      background: rgba(11,18,32,0.75);
+      padding: 6px 10px;
+      border-radius: 8px;
+    }
+
+    /* Quote */
+    .quote {
+      background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(167,139,250,0.08));
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+      font-size: 1.1rem;
+      line-height: 1.55;
+    }
+    .quote footer {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    /* Interactive quiz */
+    .quiz {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 24px;
+    }
+    .quiz-options {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .quiz-options button {
+      text-align: left;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+      color: var(--text);
+      cursor: pointer;
+      font: inherit;
+      transition: 0.2s;
+    }
+    .quiz-options button:hover {
+      border-color: rgba(59,130,246,0.5);
+      background: rgba(59,130,246,0.1);
+    }
+    .quiz-result {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      background: rgba(52, 211, 153, 0.12);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      color: #a7f3d0;
+      display: none;
+    }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+      background: linear-gradient(160deg, rgba(59,130,246,0.18), rgba(34,211,238,0.08));
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 40px 24px;
+    }
+    .cta h2 { font-family: 'Unbounded', sans-serif; margin-bottom: 10px; }
+    .cta p { color: var(--muted); margin-bottom: 20px; }
+
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: space-between;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-grid, .grid-3 { grid-template-columns: 1fr; }
+      .gallery { grid-template-columns: 1fr 1fr; max-width: 100%; }
+      .event { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .stat-row { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="logo">
+        <div class="logo-badge">СИТ</div>
+        <span>Профориентация</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">О проекте</a>
+        <a href="#events">Мероприятия</a>
+        <a href="#numbers">Цифры</a>
+        <a href="#gallery">Моменты</a>
+        <a href="#quiz">Выбор пути</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="eyebrow">Медиапроект · Конкурс «Поток медиа: лучший репортаж»</div>
+          <h1>Профориентация, которая помогает выбрать профессию осознанно</h1>
+          <p class="hero-lead">
+            Как ГБПОУ РО «Сальский индустриальный техникум» знакомит школьников 8–9 классов
+            с реальными специальностями и возможностями карьеры —
+            через дни открытых дверей, экскурсии и консультации.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#events">Смотреть мероприятия</a>
+            <a class="btn btn-ghost" href="#quiz">Пройти мини-тест</a>
+          </div>
+        </div>
+        <div class="hero-card">
+          <div class="stat-row">
+            <div class="stat">
+              <strong>48+</strong>
+              <span>лет истории техникума</span>
+            </div>
+            <div class="stat">
+              <strong>~780</strong>
+              <span>студентов обучается</span>
+            </div>
+            <div class="stat">
+              <strong>200+</strong>
+              <span>бюджетных мест</span>
+            </div>
+            <div class="stat">
+              <strong>6+</strong>
+              <span>направлений подготовки</span>
+            </div>
+          </div>
+          <p style="color:var(--muted);font-size:0.92rem;">
+            ГБПОУ РО «СИТ» · г. Сальск, ул. Ленина, 27<br>
+            Подготовка кадров для промышленности, IT, экономики и сферы услуг Донского края.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <div class="container">
+        <h2 class="section-title">Зачем нужна профориентация в СПО</h2>
+        <p class="section-sub">
+          Выбор специальности — одно из самых важных решений в жизни. В Сальском индустриальном техникуме
+          профориентационная работа строится так, чтобы школьники увидели профессию «изнутри»,
+          а не только по описанию в буклете.
+        </p>
+        <div class="grid-3">
+          <article class="card">
+            <div class="card-icon">🎯</div>
+            <h3>Осознанный выбор</h3>
+            <p>Мероприятия помогают понять, какие задачи решает специалист, какие навыки нужны и куда можно трудоустроиться после выпуска.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🏫</div>
+            <h3>Экскурсии и открытые двери</h3>
+            <p>Школьники 8–9 классов видят мастерские, оборудование и условия обучения своими глазами.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">🛠️</div>
+            <h3>Знакомство с профессиями</h3>
+            <p>Экскурсии дают почувствовать профессию: сварка, слесарное дело, монтаж, IT-системы, экономика, кулинария.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section id="events">
+      <div class="container">
+        <h2 class="section-title">Форматы профориентационных мероприятий</h2>
+        <p class="section-sub">
+          В течение учебного года техникум проводит серию событий для школьников 8–9 классов,
+          родителей и будущих абитуриентов.
+        </p>
+        <div class="timeline">
+          <article class="event">
+            <div class="event-date">Осень — Весна</div>
+            <div>
+              <h3>Дни открытых дверей</h3>
+              <p>
+                Экскурсии по мастерским, презентации специальностей,
+                общение со студентами и преподавателями. Гости видят оборудование,
+                учебные проекты и условия обучения.
+              </p>
+              <span class="tag">Открытый формат · для школьников 8–9 классов и родителей</span>
+            </div>
+          </article>
+          <article class="event">
+            <div class="event-date">По заявкам школ</div>
+            <div>
+              <h3>Выездные профориентационные уроки</h3>
+              <p>
+                Педагоги и студенты СИТ приезжают в школы района: рассказывают о специальностях,
+                проводят мини-тесты и показывают учебные ролики и проекты.
+              </p>
+              <span class="tag">Выезд · партнёрство со школами</span>
+            </div>
+          </article>
+          <article class="event">
+            <div class="event-date">Перед приёмной кампанией</div>
+            <div>
+              <h3>Консультации для абитуриентов</h3>
+              <p>
+                Индивидуальные и групповые консультации по выбору специальности,
+                правилам приёма, общежитию, стипендиям и дальнейшему трудоустройству.
+              </p>
+              <span class="tag">Поддержка · школьники 8–9 классов</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- NUMBERS / INFOGRAPHIC -->
+    <section id="numbers">
+      <div class="container">
+        <h2 class="section-title">Что выбирают абитуриенты: направления СИТ</h2>
+        <p class="section-sub">
+          Условная инфографика по востребованности направлений (ориентир на типичную структуру приёма СПО техникума).
+          Реальные контрольные цифры приёма публикуются на официальном сайте перед каждой кампанией.
+        </p>
+        <div class="infographic">
+          <div class="bars">
+            <div class="bar-item">
+              <label><span>Компьютерные системы и комплексы</span><span>высокая</span></label>
+              <div class="bar-track"><div class="bar-fill" style="width:92%"></div></div>
+            </div>
+            <div class="bar-item">
+              <label><span>Монтаж и эксплуатация электрооборудования</span><span>высокая</span></label>
+              <div class="bar-track"><div class="bar-fill" style="width:85%"></div></div>
+            </div>
+            <div class="bar-item">
+              <label><span>Сварщик</span><span>стабильная</span></label>
+              <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
+            </div>
+            <div class="bar-item">
+              <label><span>Слесарь</span><span>стабильная</span></label>
+              <div class="bar-track"><div class="bar-fill" style="width:76%"></div></div>
+            </div>
+            <div class="bar-item">
+              <label><span>Экономика и бухгалтерский учёт</span><span>стабильная</span></label>
+              <div class="bar-track"><div class="bar-fill" style="width:70%"></div></div>
+            </div>
+            <div class="bar-item">
+              <label><span>Повар, кондитер</span><span>популярная</span></label>
+              <div class="bar-track"><div class="bar-fill" style="width:68%"></div></div>
+            </div>
+          </div>
+          <p style="margin-top:18px;color:var(--muted);font-size:0.9rem;">
+            Источник ориентиров: открытые данные о программах ГБПОУ РО «СИТ». Для точных цифр 2026 года
+            смотрите раздел «Абитуриентам» на <a href="https://sit-salsk.ru/" target="_blank" rel="noopener">sit-salsk.ru</a>.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery">
+      <div class="container">
+        <h2 class="section-title">Моменты профориентации</h2>
+        <div class="gallery">
+          <div class="photo has-img" style="background-image: url('masterskaya.jpg');"><span>Мастерская</span></div>
+          <div class="photo has-img" style="background-image: url('den-otkrytyh.jpg');"><span>День открытых дверей</span></div>
+          <div class="photo has-img" style="background-image: url('muzei.jpg');"><span>Музей</span></div>
+          <div class="photo has-img" style="background-image: url('kuhnya.jpg');"><span>Кухня · практика</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- QUOTE -->
+    <section>
+      <div class="container">
+        <blockquote class="quote">
+          «Профориентация — это не реклама техникума. Это помощь школьнику 8–9 класса увидеть,
+          чем он будет заниматься каждый день, какие навыки ему понадобятся и как эта профессия
+          живёт в реальных мастерских Сальска и Ростовской области.»
+          <footer>— медиапроект о профориентационной работе ГБПОУ РО «СИТ»</footer>
+        </blockquote>
+      </div>
+    </section>
+
+    <!-- QUIZ -->
+    <section id="quiz">
+      <div class="container">
+        <h2 class="section-title">Мини-тест: какой путь тебе ближе?</h2>
+        <p class="section-sub">Интерактивный элемент медиапроекта. Выбери один вариант — получи направление для знакомства.</p>
+        <div class="quiz">
+          <p><strong>Что тебе интереснее прямо сейчас?</strong></p>
+          <div class="quiz-options">
+            <button type="button" onclick="showResult('it')">Собирать и настраивать компьютеры, сети, программы</button>
+            <button type="button" onclick="showResult('electro')">Работать с электрикой, автоматикой и оборудованием зданий</button>
+            <button type="button" onclick="showResult('weld')">Соединять металл, работать руками и техникой</button>
+            <button type="button" onclick="showResult('lock')">Работать руками с инструментом, ремонтировать и собирать механизмы</button>
+            <button type="button" onclick="showResult('eco')">Считать, планировать, вести учёт и документы</button>
+            <button type="button" onclick="showResult('cook')">Готовить, творить на кухне, обслуживать людей</button>
+          </div>
+          <div id="quizResult" class="quiz-result"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section>
+      <div class="container">
+        <h2 class="section-title">Как устроена профориентация в СИТ</h2>
+        <div class="grid-3">
+          <article class="card">
+            <div class="card-icon">1</div>
+            <h3>Знакомство</h3>
+            <p>Школьники узнают о специальностях через презентации, сайт, соцсети и выездные уроки.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">2</div>
+            <h3>Погружение</h3>
+            <p>Дни открытых дверей и экскурсии показывают профессию «в деле» — с оборудованием и наставниками.</p>
+          </article>
+          <article class="card">
+            <div class="card-icon">3</div>
+            <h3>Выбор и поступление</h3>
+            <p>Консультации, документы, знакомство с жизнью техникума и дальнейшими шагами к профессии.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section id="contacts">
+      <div class="container">
+        <div class="cta">
+          <h2>Приходи на профориентацию в СИТ</h2>
+          <p>
+            Уточняй даты Дней открытых дверей и экскурсий на официальном сайте
+            и в приёмной комиссии техникума.
+          </p>
+          <div class="hero-actions" style="justify-content:center;">
+            <a class="btn btn-primary" href="https://sit-salsk.ru/" target="_blank" rel="noopener">Официальный сайт СИТ</a>
+          </div>
+          <p style="margin-top:18px;font-size:0.9rem;color:var(--muted);">
+            Адрес: 347630, Ростовская область, г. Сальск, ул. Ленина, 27<br>
+            Тел.: 8 (86372) 5-05-71
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong style="color:var(--text);">Медиапроект</strong><br>
+        «Профориентационные мероприятия» · ГБПОУ РО «Сальский индустриальный техникум»
+      </div>
+      <div>
+        Конкурс «Поток медиа: лучший репортаж» · 2026<br>
+        Номинация «Лучший медиапроект»
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const results = {
+      it: 'Тебе ближе направление <strong>«Компьютерные системы и комплексы»</strong>. На Дне открытых дверей загляни в компьютерные кабинеты и спроси про учебные проекты.',
+      electro: 'Тебе может подойти <strong>«Монтаж, наладка и эксплуатация электрооборудования»</strong>. На экскурсии можно увидеть работу с оборудованием вживую.',
+      weld: 'Обратите внимание на профессию <strong>«Сварщик»</strong>. На Дне открытых дверей покажут технику и безопасность работы.',
+      lock: 'Тебе может подойти профессия <strong>«Слесарь»</strong>. На экскурсии по мастерским можно увидеть, как работают с инструментом и механизмами.',
+      eco: 'Посмотри специальность <strong>«Экономика и бухгалтерский учёт»</strong>. На консультации расскажут, где работают выпускники в регионе.',
+      cook: 'Направление <strong>«Повар, кондитер»</strong> — про вкус, точность и сервис. На профориентации можно познакомиться с кухней и практикой.'
+    };
+
+    function showResult(key) {
+      const box = document.getElementById('quizResult');
+      box.innerHTML = results[key] || '';
+      box.style.display = 'block';
+      box.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  </script>
+</body>
+</html>
